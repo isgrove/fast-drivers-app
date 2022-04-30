@@ -1,0 +1,167 @@
+﻿<Page x:Class="FastDriversApp.v1.Views.BookingManagementView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FastDriversApp.v1.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BookingManagementView">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50px" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50px" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="left">
+            <TextBlock Text="Booking Management" FontSize="28px"
+                       FontWeight="bold"/>
+            <ComboBox x:Name="cmbSearchBooking" Width="100" Margin="10">
+                <ComboBoxItem Content="ID"/>
+                <ComboBoxItem Content="FirstName"/>
+                <ComboBoxItem Content="LastName"/>
+                <ComboBoxItem Content="BookingDate"/>
+            </ComboBox>
+            <TextBox x:Name="txtSearchBooking" Width="200" Margin="10" />
+            <Button Content="SEARCH" x:Name="btnSearchBooking" 
+                    Width="150" Margin="10" FontSize="18" />
+        </StackPanel>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Completed Bookings">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="0" x:Name="dgCompletedBookings" Margin="5" ItemsSource="{Binding AllCompletedBookings}" SelectedItem="{Binding SelectedBooking}"/>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Customer FirstName : " Grid.Row="0" Grid.Column="0"/>
+                        <TextBox IsReadOnly="True" x:Name="txtCFirstName" Text="{Binding SelectedBooking.CustomerFirstName}" Grid.Row="0" Grid.Column="1" Margin="5" />
+                        <Label Content="Customer LastName : " Grid.Row="1" Grid.Column="0"/>
+                        <TextBox IsReadOnly="True" x:Name="txtCLastName" Text="{Binding SelectedBooking.CustomerLastName}" Grid.Row="1" Grid.Column="1" Margin="5" />
+                        <Label Content="PickUp Street : " Grid.Row="2" Grid.Column="0"/>
+                        <TextBox IsReadOnly="True" x:Name="txtPickUpStreet" Text="{Binding SelectedBooking.Street}" Grid.Row="2" Grid.Column="1" Margin="5" />
+                        <Label Content="PickUp Suburb : " Grid.Row="3" Grid.Column="0"/>
+                        <TextBox IsReadOnly="True" x:Name="txtPickUpSuburb" Text="{Binding SelectedBooking.Suburb}" Grid.Row="3" Grid.Column="1" Margin="5" />
+                        <Label Content="PickUp PostCode : " Grid.Row="4" Grid.Column="0"/>
+                        <TextBox IsReadOnly="True" x:Name="txtPUPostCode" Text="{Binding SelectedBooking.PostCode}" Grid.Row="4" Grid.Column="1" Margin="5" />
+                        <Label Content="Booking Date : " Grid.Row="5" Grid.Column="0"/>
+                        <DatePicker IsEnabled="False"  x:Name="dtpBookingDate" SelectedDate="{Binding SelectedBooking.BookingDate}" Grid.Row="5" Grid.Column="1" Margin="5" />
+
+                        <Label Content="Driver FirstName : " Grid.Row="0" Grid.Column="2"/>
+                        <TextBox IsReadOnly="True" x:Name="txtDFirstName" Text="{Binding SelectedBooking.InstructorFirstName}" Grid.Row="0" Grid.Column="3" Margin="5" />
+                        <Label Content="Driver LastName: " Grid.Row="1" Grid.Column="2"/>
+                        <TextBox IsReadOnly="True" x:Name="txtDLastName" Text="{Binding SelectedBooking.InstructorLastName}" Grid.Row="1" Grid.Column="3" Margin="5" />
+                        <Label Content="Transmission Type : " Grid.Row="2" Grid.Column="2"/>
+                        <ComboBox IsEnabled="False" x:Name="cmbCategory" ItemsSource="{Binding TransmissionTypes}"
+                    DisplayMemberPath="TransmissionTypeName"
+                    Text="{Binding SelectedBooking.TransmissionType}"
+                    Grid.Row="2" Grid.Column="3" Margin="5" />
+                        <Label Content="Booking Time : " Grid.Row="3" Grid.Column="2"/>
+                        <ComboBox IsEnabled="False" x:Name="cmbBookingTime" ItemsSource="{Binding TimeSlots}"
+                    DisplayMemberPath="StartTime"
+                    Text="{Binding SelectedBooking.BookingTime}"
+                    Grid.Row="3" Grid.Column="3" Margin="5" />
+                        <Label Content="Booking Status : " Grid.Row="4" Grid.Column="2"/>
+                        <ComboBox IsEnabled="False" x:Name="cmbBookingStatus" ItemsSource="{Binding BookingStatuses}"
+                    DisplayMemberPath="Status"
+                    Text="{Binding SelectedBooking.BookingStatus}"
+                    Grid.Row="4" Grid.Column="3" Margin="5" />
+                        <Label Content="Payment Status: " Grid.Row="5" Grid.Column="2"/>
+                        <ComboBox x:Name="cmbPaymentStatus" ItemsSource="{Binding PaymentStatuses, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    DisplayMemberPath="Status"
+                          SelectedItem="{Binding SelectedPayment}"
+                    Text="{Binding SelectedBooking.PaymentStatus, UpdateSourceTrigger=PropertyChanged}"
+                    Grid.Row="6" Grid.Column="3" Margin="5" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Rejected for Payments">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="0" x:Name="dgRejectedBookings" Margin="5" ItemsSource="{Binding AllPaymentRejectedBookings}" SelectedItem="{Binding SelectedBooking}"/>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Customer FirstName : " Grid.Row="0" Grid.Column="0"/>
+                        <TextBox IsReadOnly="True" x:Name="txtCFirstName2" Text="{Binding SelectedBooking.CustomerFirstName}" Grid.Row="0" Grid.Column="1" Margin="5" />
+                        <Label Content="Customer LastName : " Grid.Row="1" Grid.Column="0"/>
+                        <TextBox IsReadOnly="True" x:Name="txtCLastName2" Text="{Binding SelectedBooking.CustomerLastName}" Grid.Row="1" Grid.Column="1" Margin="5" />
+                        <Label Content="PickUp Street : " Grid.Row="2" Grid.Column="0"/>
+                        <TextBox IsReadOnly="True" x:Name="txtPickUpStreet2" Text="{Binding SelectedBooking.Street}" Grid.Row="2" Grid.Column="1" Margin="5" />
+                        <Label Content="PickUp Suburb : " Grid.Row="3" Grid.Column="0"/>
+                        <TextBox IsReadOnly="True" x:Name="txtPickUpSuburb2" Text="{Binding SelectedBooking.Suburb}" Grid.Row="3" Grid.Column="1" Margin="5" />
+                        <Label Content="PickUp PostCode : " Grid.Row="4" Grid.Column="0"/>
+                        <TextBox IsReadOnly="True" x:Name="txtPUPostCode2" Text="{Binding SelectedBooking.PostCode}" Grid.Row="4" Grid.Column="1" Margin="5" />
+                        <Label Content="Booking Date : " Grid.Row="5" Grid.Column="0"/>
+                        <DatePicker IsEnabled="False"  x:Name="dtpBookingDate2" SelectedDate="{Binding SelectedBooking.BookingDate}" Grid.Row="5" Grid.Column="1" Margin="5" />
+
+                        <Label Content="Driver FirstName : " Grid.Row="0" Grid.Column="2"/>
+                        <TextBox IsReadOnly="True" x:Name="txtDFirstName2" Text="{Binding SelectedBooking.InstructorFirstName}" Grid.Row="0" Grid.Column="3" Margin="5" />
+                        <Label Content="Driver LastName: " Grid.Row="1" Grid.Column="2"/>
+                        <TextBox IsReadOnly="True" x:Name="txtDLastName2" Text="{Binding SelectedBooking.InstructorLastName}" Grid.Row="1" Grid.Column="3" Margin="5" />
+                        <Label Content="Transmission Type : " Grid.Row="2" Grid.Column="2"/>
+                        <ComboBox IsEnabled="False" x:Name="cmbCategory2" ItemsSource="{Binding TransmissionTypes}"
+                    DisplayMemberPath="TransmissionTypeName"
+                    Text="{Binding SelectedBooking.TransmissionType}"
+                    Grid.Row="2" Grid.Column="3" Margin="5" />
+                        <Label Content="Booking Time : " Grid.Row="3" Grid.Column="2"/>
+                        <ComboBox IsEnabled="False" x:Name="cmbBookingTime2" ItemsSource="{Binding TimeSlots}"
+                    DisplayMemberPath="StartTime"
+                    Text="{Binding SelectedBooking.BookingTime}"
+                    Grid.Row="3" Grid.Column="3" Margin="5" />
+                        <Label Content="Booking Status : " Grid.Row="4" Grid.Column="2"/>
+                        <ComboBox IsEnabled="False" x:Name="cmbBookingStatus2" ItemsSource="{Binding BookingStatuses}"
+                    DisplayMemberPath="Status"
+                    Text="{Binding SelectedBooking.BookingStatus}"
+                    Grid.Row="4" Grid.Column="3" Margin="5" />
+                        <Label Content="Payment Status: " Grid.Row="5" Grid.Column="2"/>
+                        <ComboBox x:Name="cmbPaymentStatus2" ItemsSource="{Binding PaymentStatuses, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    DisplayMemberPath="Status"
+                          SelectedItem="{Binding SelectedPayment}"
+                    Text="{Binding SelectedBooking.PaymentStatus, UpdateSourceTrigger=PropertyChanged}"
+                    Grid.Row="6" Grid.Column="3" Margin="5" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
+            <Button x:Name="btnNewBooking" Content="NEW BOOKING" Width="150" Margin="10"/>
+            <Button x:Name="btnDelete" Content="DELETE" Width="150" Margin="10"/>
+            <Button x:Name="btnAdd" Content="ADD" Width="150" Margin="10"/>
+            <Button Command="{Binding UpdateCommand}" x:Name="btnUpdate" Content="SAVE" Width="150" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Page>

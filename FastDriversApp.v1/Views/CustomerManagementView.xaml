@@ -1,0 +1,79 @@
+﻿<Page x:Class="FastDriversApp.v1.Views.CustomerManagementView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FastDriversApp.v1.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CustomerManagementView">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="left">
+            <TextBlock Text="Customer Management" FontSize="28px"
+                       FontWeight="bold"/>
+            <TextBox Text="{Binding SearchText}" x:Name="txtSearchCustomer" Width="300" Margin="10" />
+            <Button Content="SEARCH" x:Name="btnSearchCustomer" 
+                    Width="150" Margin="10" FontSize="18" Command="{Binding SearchCommand}"/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" x:Name="dgCustomers" Margin="5" 
+                  ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}"/>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <!--First Two Columns data -->
+            <Label Content="FirstName : " Grid.Row="0" Grid.Column="0"/>
+            <TextBox Text="{Binding SelectedCustomer.FirstName}" x:Name="txtFirstName" Grid.Row="0" Grid.Column="1" Margin="5" />
+            <Label Content="LastName : " Grid.Row="1" Grid.Column="0"/>
+            <TextBox Text="{Binding SelectedCustomer.LastName}" x:Name="txtLastName" Grid.Row="1" Grid.Column="1" Margin="5" />
+            <Label Content="Street : " Grid.Row="2" Grid.Column="0"/>
+            <TextBox x:Name="txtStreet" Grid.Row="2" Grid.Column="1" Margin="5" />
+            <Label Content="Suburb : " Grid.Row="3" Grid.Column="0"/>
+            <TextBox x:Name="txtSuburb" Grid.Row="3" Grid.Column="1" Margin="5" />
+            <Label Content="PostCode : " Grid.Row="4" Grid.Column="0"/>
+            <TextBox x:Name="txtPostCode" Grid.Row="4" Grid.Column="1" Margin="5" />
+            <Label Content="Birth Date : " Grid.Row="5" Grid.Column="0"/>
+            <TextBox x:Name="txtDOB" Grid.Row="5" Grid.Column="1" Margin="5" />
+            
+            <!-- Last Two columns data-->
+            <Label Content="Phone : " Grid.Row="0" Grid.Column="2"/>
+            <TextBox Text="{Binding SelectedCustomer.Phone}" x:Name="txtPhone" Grid.Row="0" Grid.Column="3" Margin="5" />
+            <Label Content="Email: " Grid.Row="1" Grid.Column="2"/>
+            <TextBox Text="{Binding SelectedCustomer.Email}" x:Name="txtEmail" Grid.Row="1" Grid.Column="3" Margin="5" />
+            <Label Content="Name on Card : " Grid.Row="2" Grid.Column="2"/>
+            <TextBox x:Name="txtNameOnCard" Grid.Row="2" Grid.Column="3" Margin="5" />
+            <Label Content="Credit Card Number : " Grid.Row="3" Grid.Column="2"/>
+            <TextBox x:Name="txtCCNumber" Grid.Row="3" Grid.Column="3" Margin="5"/>
+            <Label Content="Expiry : " Grid.Row="4" Grid.Column="2"/>
+            <TextBox x:Name="txtExpiry" Grid.Row="4" Grid.Column="3" Margin="5" />
+            <Label Content="CVV: " Grid.Row="5" Grid.Column="2"/>
+            <TextBox x:Name="txtCVV" Grid.Row="5" Grid.Column="3" Margin="5" />       
+        </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3">
+            <Button x:Name="btnNewBooking" IsEnabled="{Binding IsCustomerSelected}" Content="NEW BOOKING" Width="150" Margin="10" Click="btnNewBooking_Click"/>
+            <Button x:Name="btnUpdate" Content="SAVE" Width="150" Margin="10"/>
+            <Button x:Name="btnDelete" Content="DELETE" Width="150" Margin="10"/>
+            <Button x:Name="btnAdd" Content="ADD" Width="150" Margin="10" Click="btnAdd_Click"/>            
+        </StackPanel>   
+
+    </Grid>
+    
+</Page>

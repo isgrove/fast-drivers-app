@@ -1,0 +1,69 @@
+﻿<Page x:Class="FastDriversApp.v1.Views.AddCustomerView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FastDriversApp.v1.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddCustomerView">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="New Customer Form" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="20px" FontWeight="Bold"/>
+        <Label Content="FirstName : " Grid.Row="1" Grid.Column="0"/>
+        <TextBox Text="{Binding NewCustomer.CustomerId}" x:Name="txtCustomerId" Grid.Row="1" Grid.Column="1" Margin="10" />
+        <Label Content="LastName : " Grid.Row="2" Grid.Column="0"/>
+        <TextBox Text="{Binding NewCustomer.LastName}" x:Name="txtLastName" Grid.Row="2" Grid.Column="1" Margin="10" />
+        <Label Content="Street : " Grid.Row="3" Grid.Column="0"/>
+        <TextBox Text="{Binding NewCustomer.Street}" x:Name="txtStreet" Grid.Row="3" Grid.Column="1" Margin="10" />
+        <Label Content="Suburb : " Grid.Row="4" Grid.Column="0"/>
+        <TextBox Text="{Binding NewCustomer.Suburb}" x:Name="txtSuburb" Grid.Row="4" Grid.Column="1" Margin="10" />
+        <Label Content="PostCode : " Grid.Row="5" Grid.Column="0"/>
+        <TextBox Text="{Binding NewCustomer.PostCode}" x:Name="txtPostCode" Grid.Row="5" Grid.Column="1" Margin="10" />
+        <Label Content="State : " Grid.Row="6" Grid.Column="0"/>
+        <TextBox Text="{Binding NewCustomer.State}" x:Name="txtState" Grid.Row="6" Grid.Column="1" Margin="10" />
+        <Label Content="Birth Date : " Grid.Row="7" Grid.Column="0"/>
+        <DatePicker SelectedDate="{Binding NewCustomer.Dob, StringFormat=dd/MM/yyyy}" x:Name="dtpDOB" Grid.Row="7" Grid.Column="1" Margin="10" />
+        <Label Content="License Number : " Grid.Row="8" Grid.Column="0"/>
+        <TextBox Text="{Binding NewCustomer.LicenceNumber}" x:Name="txtLicenseNumber" Grid.Row="8" Grid.Column="1" Margin="10" />
+
+        <!-- Last Two columns data-->
+        <Label Content="Phone : " Grid.Row="1" Grid.Column="2"/>
+        <TextBox Text="{Binding NewCustomer.Phone}" x:Name="txtPhone" Grid.Row="1" Grid.Column="3" Margin="10" />
+        <Label Content="Email: " Grid.Row="2" Grid.Column="2"/>
+        <TextBox Text="{Binding NewCustomer.Email}" x:Name="txtEmail" Grid.Row="2" Grid.Column="3" Margin="10" />
+        <Label Content="Name on Card : " Grid.Row="3" Grid.Column="2"/>
+        <TextBox Text="{Binding NewCustomer.CCName}" x:Name="txtNameOnCard" Grid.Row="3" Grid.Column="3" Margin="10" />
+        <Label Content="Credit Card Number : " Grid.Row="4" Grid.Column="2"/>
+        <TextBox Text="{Binding NewCustomer.CCNumber}" x:Name="txtCCNumber" Grid.Row="4" Grid.Column="3" Margin="10"/>
+        <Label Content="Expiry Month : " Grid.Row="5" Grid.Column="2"/>
+        <TextBox Text="{Binding NewCustomer.ExpiryMonth}" x:Name="txtExpiryMonth" Grid.Row="5" Grid.Column="3" Margin="10" />
+        <Label Content="Expiry Year : " Grid.Row="6" Grid.Column="2"/>
+        <TextBox Text="{Binding NewCustomer.ExpiryYear}" x:Name="txtExpiryYear" Grid.Row="6" Grid.Column="3" Margin="10" />
+        <Label Content="CVV: " Grid.Row="7" Grid.Column="2"/>
+        <TextBox Text="{Binding NewCustomer.CCV}" x:Name="txtCVV" Grid.Row="7" Grid.Column="3" Margin="10" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="9" Grid.ColumnSpan="4">
+            <Button Command="{Binding AddCommand}" x:Name="btnSave" Content="SAVE" Width="150" Margin="10"/>
+            <Button x:Name="btnClear" Content="CLEAR" Width="150" Margin="10"/>
+            <Button x:Name="btnCancel" Content="CANCEL" Width="150" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Page>

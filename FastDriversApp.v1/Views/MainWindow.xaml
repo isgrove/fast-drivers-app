@@ -1,0 +1,59 @@
+﻿<Window x:Class="FastDriversApp.v1.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FastDriversApp.v1.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1100">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />            
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Background="black">
+            <Image Source="../Images/logo.png" Height="70" Width="70" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Background="Black">
+            <Button Foreground="White" Background="black" 
+                    Content="Customer Management" FontSize="20" FontWeight="Bold"
+                    x:Name="btnCustomerManagement"
+                    Height="50"
+                    BorderBrush="White"
+                    BorderThickness="0,0,0,1" Click="btnCustomerManagement_Click"
+                     />
+            <Button Foreground="White" Background="black" 
+                    Content="Instructor Management" FontSize="20" FontWeight="Bold"
+                    x:Name="btnInstructorManagement"
+                    Height="50"
+                    BorderBrush="White"
+                    BorderThickness="0,0,0,1" Click="btnInstructorManagement_Click"/>
+            <Button Foreground="White" Background="black" 
+                    Content="Booking Management" FontSize="20" FontWeight="Bold"
+                    x:Name="btnBookingManagement"
+                    Height="50"
+                    BorderBrush="White"
+                    BorderThickness="0,0,0,1" Click="btnBookingManagement_Click"/>
+            <Button Foreground="White" Background="black" 
+                    Content="Staff Management" FontSize="20" FontWeight="Bold"
+                    x:Name="btnStaffManagement"
+                    Height="50"
+                    BorderBrush="White"
+                    BorderThickness="0,0,0,1"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" 
+                    Grid.Column ="1" Background="Black">
+            <TextBlock x:Name="txbCompanyName" 
+                       Text="Fast Drivers Back-Office Application"
+                       Foreground="White"
+                       Margin="10"
+                       FontSize="28"                       
+                       FontWeight="bold"/>
+        </StackPanel>
+        <Frame NavigationUIVisibility="Hidden" x:Name="contentFrame" Grid.Column="1" Grid.Row="1" />
+    </Grid>
+</Window>

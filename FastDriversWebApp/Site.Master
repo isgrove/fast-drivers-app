@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="FastDriversWebApp.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast Drivers Web Application</title>
+    <%//bootstrap %>
+    <link href="BootStrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="FontAwesome/css/all.css" rel="stylesheet" />
+    <script src="BootStrap/js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="../Images/logo1.png" width="30" height="30" />
+                    FastDrivers
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="HomePage.aspx">Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="AboutUs.aspx">About Us</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Terms.aspx">Terms</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-time active">
+                            <asp:LinkButton CssClass="nav-link" ID="lbtnSignUp"
+                                runat="server" OnClick="lbtnSignUp_Click">
+                            Sign Up
+                            </asp:LinkButton>
+                        </li>
+                        <li class="nav-time active">
+                            <asp:LinkButton CssClass="nav-link" ID="lbtnLogin"
+                                runat="server" OnClick="lbtnLogin_Click">
+                            Login
+                            </asp:LinkButton>
+                        </li>
+                        <li class="nav-time active">
+                            <asp:LinkButton CssClass="nav-link" ID="lbtnNewBooking"
+                                visible="false" runat="server" OnClick="lbtnNewBooking_Click">
+                            New Bookig
+                            </asp:LinkButton>
+                        </li>
+                         <li class="nav-time active">
+                            <asp:LinkButton CssClass="nav-link" ID="lbtnAcceptedBookings"
+                                visible="false" runat="server" OnClick="lbtnAcceptedBookings_Click">
+                            Accepted Bookings
+                            </asp:LinkButton>
+                        </li>
+                        <li class="nav-time active">
+                            <asp:LinkButton CssClass="nav-link" ID="lbtnLogout"
+                                visible="false" runat="server" OnClick="lbtnLogout_Click">
+                            Logout
+                            </asp:LinkButton>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </form>
+</body>
+</html>
