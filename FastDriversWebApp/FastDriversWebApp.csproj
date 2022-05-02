@@ -118,6 +118,7 @@
     <Content Include="BootStrap\js\bootstrap.min.js" />
     <Content Include="Pages\AcceptedBookings.aspx" />
     <Content Include="Pages\AllCompletedBookings.aspx" />
+    <Content Include="Pages\AllRejectedBookings.aspx" />
     <Content Include="Pages\Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -274,6 +275,7 @@
     <Compile Include="Models\CompletedBookings.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Instructor.cs" />
+    <Compile Include="Models\RejectedBookings.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="DAL\SQLHelper.cs" />
@@ -298,6 +300,13 @@
     </Compile>
     <Compile Include="Pages\AllCompletedBookings.aspx.designer.cs">
       <DependentUpon>AllCompletedBookings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AllRejectedBookings.aspx.cs">
+      <DependentUpon>AllRejectedBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AllRejectedBookings.aspx.designer.cs">
+      <DependentUpon>AllRejectedBookings.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

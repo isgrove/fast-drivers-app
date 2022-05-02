@@ -19,9 +19,13 @@ namespace FastDriversWebApp.Pages
                     LinkButton signUp = (LinkButton)Master.FindControl("lbtnSignUp");
                     LinkButton login = (LinkButton)Master.FindControl("lbtnLogin");
                     LinkButton logout = (LinkButton)Master.FindControl("lbtnLogout");
+                    LinkButton completedBookings = (LinkButton)Master.FindControl("lbtnAllCompletedBookings");
+                    LinkButton rejectedBookings = (LinkButton)Master.FindControl("lbtnAllRejectedBookings");
                     signUp.Visible = false;
                     login.Visible = false;
                     logout.Visible = true;
+                    completedBookings.Visible = true;
+                    rejectedBookings.Visible = true;
 
                     RefreshGrid();
                 }

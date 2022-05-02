@@ -11,7 +11,7 @@ namespace FastDriversWebApp.Models
     {
         public DataTable GetAllAvailableSessions(DateTime date, string time, string suburb)
         {
-            string sql = "SELECT t.startTime, a.availablityId, i.firstName, i.lastName " +
+            string sql = "SELECT t.startTime, a.availabilityId, i.firstName, i.lastName " +
                 " FROM TimeSlot t, Availability a, Instructor i, PreferredSuburb ps" +
                 " WHERE t.timeSlotId = a.timeSlotId " +
                 " AND i.instructorId = a.instructorId " +

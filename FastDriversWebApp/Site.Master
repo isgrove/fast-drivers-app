@@ -49,19 +49,31 @@
                         </li>
                         <li class="nav-time active">
                             <asp:LinkButton CssClass="nav-link" ID="lbtnNewBooking"
-                                visible="false" runat="server" OnClick="lbtnNewBooking_Click">
+                                Visible="false" runat="server" OnClick="lbtnNewBooking_Click">
                             New Bookig
                             </asp:LinkButton>
                         </li>
-                         <li class="nav-time active">
+                        <li class="nav-time active">
                             <asp:LinkButton CssClass="nav-link" ID="lbtnAcceptedBookings"
-                                visible="false" runat="server" OnClick="lbtnAcceptedBookings_Click">
+                                Visible="false" runat="server" OnClick="lbtnAcceptedBookings_Click">
                             Accepted Bookings
                             </asp:LinkButton>
                         </li>
                         <li class="nav-time active">
+                            <asp:LinkButton CssClass="nav-link" ID="lbtnAllCompletedBookings"
+                                Visible="false" runat="server" OnClick="lbtnAllCompletedBookings_Click">
+                            All Completed Bookings
+                            </asp:LinkButton>
+                        </li>
+                        <li class="nav-time active">
+                            <asp:LinkButton CssClass="nav-link" ID="lbtnAllRejectedBookings"
+                                Visible="false" runat="server" OnClick="lbtnAllRejectedBookings_Click">
+                            All Rejected Bookings
+                            </asp:LinkButton>
+                        </li>
+                        <li class="nav-time active">
                             <asp:LinkButton CssClass="nav-link" ID="lbtnLogout"
-                                visible="false" runat="server" OnClick="lbtnLogout_Click">
+                                Visible="false" runat="server" OnClick="lbtnLogout_Click">
                             Logout
                             </asp:LinkButton>
                         </li>
