@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="New Customer Form" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="20px" FontWeight="Bold"/>
         <Label Content="FirstName : " Grid.Row="1" Grid.Column="0"/>
-        <TextBox Text="{Binding NewCustomer.CustomerId}" x:Name="txtCustomerId" Grid.Row="1" Grid.Column="1" Margin="10" />
+        <TextBox Text="{Binding NewCustomer.FirstName}" x:Name="txtFirstName" Grid.Row="1" Grid.Column="1" Margin="10" />
         <Label Content="LastName : " Grid.Row="2" Grid.Column="0"/>
         <TextBox Text="{Binding NewCustomer.LastName}" x:Name="txtLastName" Grid.Row="2" Grid.Column="1" Margin="10" />
         <Label Content="Street : " Grid.Row="3" Grid.Column="0"/>
