@@ -5,12 +5,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FastDriversApp.v1.Models
 {
-    public class Customer : INotifyPropertyChanged
+    public class Customer : INotifyPropertyChanged, IDataErrorInfo
     {
         private int _customerId;
         private string _firstName;
@@ -31,13 +32,55 @@ namespace FastDriversApp.v1.Models
         private int _ccExpiryYear;
         private int _ccCVV;
         private SQLHelper _db;
-
+        public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string prop)
         {
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
+        public string Error
+        {
+            get { return null; }
+        }
+
+        // When creating a new Job make sure that your job can only be booked for the future date.
+        public string this[string propertyName]
+        {
+            get
+            {
+                string result = null;
+                switch (propertyName)
+                {
+                    case "FirstName":
+                        if (string.IsNullOrEmpty(this.FirstName))
+                        {
+                            result = "First name cannot be left empty!";
+                        }
+                        break;
+                    case "LastName":
+                        if (string.IsNullOrEmpty(this.FirstName))
+                        {
+                            result = "Last name cannot be left empty!";
+                        }
+                        break;
+                    case "Dob":
+                        if (Dob > DateTime.Now)
+                        {
+                            result = "Your DOB cannot be in the future!";
+                        }
+                        break;
+                }
+                if (result != null)
+                {
+                    //ErrorCollection.Add(propertyName, result);
+                    // Avoids "duplicate key" error
+                    ErrorCollection[propertyName] = result;
+                }
+                OnPropertyChanged("ErrorCollection");
+                return result;
             }
         }
         public int CustomerId
