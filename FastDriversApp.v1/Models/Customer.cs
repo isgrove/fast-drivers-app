@@ -193,7 +193,7 @@ namespace FastDriversApp.v1.Models
             set
             {
                 _ccCVV = value;
-                OnPropertyChanged("CCV");
+                OnPropertyChanged("CVV");
             }
         }
         public Customer(bool createHelper = true)
