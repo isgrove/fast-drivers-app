@@ -8,8 +8,6 @@ using System.Web;
 
 namespace FastDriversWebApp.Models
 {
-    //(availablityId, customerId, pickupaddress, suburb, postcode, " +
-    //    "state, bookingStatusId,paymentStatusId, kilometres)
     public class Booking
     {
         public int BookingId { get; set; }
@@ -46,7 +44,7 @@ namespace FastDriversWebApp.Models
         public int InsertBooking()
         {
             int returnValue = 0;
-            string sql = "INSERT INTO Booking(availablityId, customerId, pickupaddress, suburb, postcode, " +
+            string sql = "INSERT INTO Booking(availabilityId, customerId, street, suburb, postcode, " +
                     "state, bookingStatusId,paymentStatusId, kilometres)" +
                     " values(" + this.AvailabilityId + ", "+ this.CustomerId + ", '" + this.PickUpAddress + "'," +
                     " '" + this.Suburb + "' ,'" + this.PostCode + "', '" + this.State
