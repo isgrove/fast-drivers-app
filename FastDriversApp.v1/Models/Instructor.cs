@@ -141,9 +141,10 @@ namespace FastDriversApp.v1.Models
             get { return _dob; }
             set { _dob = value; }
         }
-        public Instructor()
+        public Instructor(bool createHelper = true)
         {
-            _db = new SQLHelper();
+            if (createHelper)
+                _db = new SQLHelper();
         }
         public Instructor(DataRow dr)
         {
