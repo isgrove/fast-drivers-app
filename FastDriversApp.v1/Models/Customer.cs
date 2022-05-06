@@ -196,9 +196,11 @@ namespace FastDriversApp.v1.Models
                 OnPropertyChanged("CCV");
             }
         }
-        public Customer()
+        public Customer(bool createHelper = true)
         {
-            _db = new SQLHelper();
+            if (createHelper) 
+                _db = new SQLHelper();
+            
         }
         private void GeneratePassword()
         {
