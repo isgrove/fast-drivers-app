@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - master
+    tags-ignore:
+      - '*.*'
     paths-ignore:
     - 'README.md'
     - 'FDTestProject'
@@ -30,8 +32,8 @@ jobs:
         run: nuget restore
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
-
+        run: msbuild FastDriversApp.v1.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+        
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
