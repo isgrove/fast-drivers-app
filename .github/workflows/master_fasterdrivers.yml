@@ -7,6 +7,10 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+    - 'README.md'
+    - 'FDTestProject'
+    - 'FastDriversWebApp'
   workflow_dispatch:
 
 jobs:
