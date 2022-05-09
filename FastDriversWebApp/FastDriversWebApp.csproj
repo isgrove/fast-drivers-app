@@ -205,6 +205,7 @@
     <Content Include="BootStrap\js\bootstrap.js.map" />
     <Content Include="BootStrap\js\bootstrap.min.js.map" />
     <Content Include="Images\login.png" />
+    <None Include="Properties\PublishProfiles\fasterdrivers - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Pages\Default.aspx" />
     <Content Include="Pages\HomePage.aspx" />
