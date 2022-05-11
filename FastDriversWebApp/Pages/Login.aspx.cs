@@ -1,6 +1,7 @@
 ﻿using FastDriversWebApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,7 +13,9 @@ namespace FastDriversWebApp.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // TODO: Debug remove
+            string cnnStr = ConfigurationManager.ConnectionStrings["FD"].ConnectionString;
+            Response.Write("<script> console.log('" + cnnStr + "') </script>");
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
